@@ -1,6 +1,6 @@
 import LineString from "../../src/entities/LineString";
 import Point from "../../src/entities/Point";
-import IsPointInLineCalculator from "../../src/services/isPointInLineCalculator";
+import IsPointInLineCalculator from "../../src/services/IsPointInLineCalculator";
 
 describe("IsPointInLineCalculator tests", () => {
   const line = new LineString([
