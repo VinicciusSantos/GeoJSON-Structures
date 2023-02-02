@@ -23,13 +23,11 @@ describe("LineString tests", () => {
 
     it.each(linesInstersecting)('should intersect with $coordinates', (otherLine) => {
         const isIntersecting = mainLine.isIntersectingWith(otherLine);
-        console.log("🚀 ~ file: LineString.test.ts:26 ~ it.each ~ isIntersecting", isIntersecting)
         expect(isIntersecting).toBeTruthy();
     })
 
     it.each(linesNotInstersecting)('should not intersect with $coordinates', (otherLine) => {
         const isIntersecting = mainLine.isIntersectingWith(otherLine);
-        console.log("🚀 ~ file: LineString.test.ts:32 ~ it.each ~ isIntersecting", isIntersecting)
         expect(isIntersecting).toBeFalsy();
     })
 });
