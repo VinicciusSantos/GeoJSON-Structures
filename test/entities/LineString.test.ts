@@ -30,4 +30,10 @@ describe("LineString tests", () => {
         const isIntersecting = mainLine.isIntersectingWith(otherLine);
         expect(isIntersecting).toBeFalsy();
     })
+
+    it('should not intersect when lines have no size', () => {
+        const firstLine = new LineString([[1, 2], [1, 2]])
+        const secondLine = new LineString([[2, 4], [2, 4]])
+        expect(firstLine.isIntersectingWith(secondLine)).toBeFalsy()
+    })
 });

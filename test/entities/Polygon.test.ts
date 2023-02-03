@@ -25,9 +25,10 @@ describe("Polygon tests", () => {
 
   describe("extreme points", () => {
     const input = [[
+      [2.5, 0.2],
       [2.6, -1.64],
       [1,1],
-      [4.56,2.36],
+      [4.56, 2.36],
       [5.72,-1]
     ]];
     const polygon = new Polygon(input)
