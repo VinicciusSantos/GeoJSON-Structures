@@ -151,11 +151,14 @@ describe("LineString tests", () => {
     });
 
     describe("getPointInIndexPosition", () => {
-      it.each(inputs)("should get the elements", (input) => {
+      it.each(inputs)("should get the elements by index", (input) => {
         const lineString = new LineString(input.lineCoordinates);
-        let index = 0
+        let index = 0;
         for (let point of input.lineCoordinates) {
-            expect(lineString.getPointInIndexPosition(index).coordinates).toStrictEqual(point);
+          const getPointOutput =
+            lineString.getPointInIndexPosition(index).coordinates;
+          expect(getPointOutput).toStrictEqual(point);
+          index++;
         }
       });
     });
