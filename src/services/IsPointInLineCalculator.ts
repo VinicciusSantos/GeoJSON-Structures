@@ -4,21 +4,25 @@ import Point from "../entities/Point";
 
 export default class IsPointInLineCalculator {
   public calculate(point: Point, line: LineString): boolean {
-    const [firstPoint, secondPoint] = line.coordinates
-    const matrix = this.preparateMatrix(firstPoint, secondPoint, point.coordinates)
-    const arePoinsAligned = matrix.calculateDeterminant() === 0
-    return arePoinsAligned && this.isPointInInterval(point, line);
+    for (let pointIndex = 0; pointIndex < line.getQuantOfPoints() - 1; pointIndex++) {
+      const firstPointOfLine = new Point(line.coordinates[pointIndex])
+      const secondPointOfLine = new Point(line.coordinates[pointIndex + 1])
+      const matrix = this.preparateMatrix(firstPointOfLine, secondPointOfLine, point)
+      const arePoinsAligned = matrix.calculateDeterminant() === 0
+      if (arePoinsAligned && this.isPointInInterval(point, firstPointOfLine, secondPointOfLine)) return true;
+    }
+    return false
   }
 
-  private preparateMatrix(firtsPoint: number[], secondPoint: number[], thirdPoint: number[]): Matrix {
+  private preparateMatrix(firtsPoint: Point, secondPoint: Point, thirdPoint: Point): Matrix {
     return new Matrix([
-      [firtsPoint[0], firtsPoint[1], 1],
-      [secondPoint[0], secondPoint[1], 1],
-      [thirdPoint[0], thirdPoint[1], 1]
+      [firtsPoint.x, firtsPoint.y, 1],
+      [secondPoint.x, secondPoint.y, 1],
+      [thirdPoint.x, thirdPoint.y, 1]
     ])
   }
 
-  private isPointInInterval(point: Point, line: LineString): boolean {
-    return point.coordinates[0] >= line.coordinates[0][0] && point.coordinates[1] <= line.coordinates[1][0]
+  private isPointInInterval(point: Point, firstPointOfLine: Point, secondPointOfLine: Point ): boolean {
+    return point.x >= firstPointOfLine.x && point.x <= secondPointOfLine.x
   }
 }

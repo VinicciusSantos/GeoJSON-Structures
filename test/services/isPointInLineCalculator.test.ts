@@ -4,6 +4,7 @@ import IsPointInLineCalculator from "../../src/services/IsPointInLineCalculator"
 
 describe("IsPointInLineCalculator tests", () => {
   const line = new LineString([
+    [1, 1],
     [-2, -2],
     [4, 4],
   ]);
