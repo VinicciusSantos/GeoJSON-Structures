@@ -14,8 +14,7 @@ export default class IsPointInPolygonCalculator {
         if(arestaLineString.isIntersectingWith(horizontalLineToRight)) arestasIntersecting++;
         pointIndex++;
       }
-      if (arestasIntersecting % 2 === 0 ) return false
     }
-    return true
+    return arestasIntersecting % 2 === 1
   }
 }
