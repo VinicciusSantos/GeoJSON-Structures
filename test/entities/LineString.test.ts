@@ -161,6 +161,13 @@ describe("LineString tests", () => {
           index++;
         }
       });
+
+      it("should not get in out of range position", () => {
+        const lineString = new LineString(inputs[0].lineCoordinates);
+        expect(() => {
+          lineString.getPointInIndexPosition(999);
+        }).toThrowError("Index of point out of line range!");
+      });
     });
   });
 });
