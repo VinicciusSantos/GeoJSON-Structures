@@ -1,4 +1,4 @@
-import MultiPolygon from "../../src/entities/MultiPoligon";
+import MultiPolygon from "../../src/entities/MultiPolygon";
 
 describe("MultiPolygon tests", () => {
   const input = [
